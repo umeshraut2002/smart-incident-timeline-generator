@@ -1,0 +1,28 @@
+{
+  "summary": {
+    "totalEvents": 12,
+    "infoCount": 4,
+    "warnCount": 2,
+    "errorCount": 6,
+    "skippedLines": 0
+  },
+  "keyAnomalies": {
+    "errorSpikes": [
+      {
+        "bucketStart": "2026-04-03T09:00:00.000Z",
+        "errorCount": 5
+      }
+    ],
+    "duplicateErrorClusters": [
+      {
+        "message": "Database connection failed",
+        "count": 5
+      }
+    ],
+    "timeGaps": [
+      {
+        "gapMinutes": 6.5
+      }
+    ]
+  }
+}
