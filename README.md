@@ -89,6 +89,7 @@ docker compose up --build
 ```
 
 Services:
+
 - Frontend: `http://localhost:5173`
 - Backend: `http://localhost:4000`
 
@@ -128,3 +129,38 @@ curl -OJ http://localhost:4000/report/<incidentId>
 - Backend persistence is isolated in a storage service so S3 can be introduced later.
 - The current frontend expects the backend base URL from `VITE_API_BASE_URL`.
 - The optional Python analysis microservice has not been added yet.
+
+# Deployment On AWS (ECR + ECS )
+
+## Understand the code and requirement
+
+- Frontend
+  - React Js
+- backend
+  - Node Js
+
+### What we need for docker-compose
+
+- Frontend - Dockerfile
+- backend - Dockerfile
+
+Note : For docker compose create we compulsary need dockerfile in every services like frontend and backend.
+
+![flow-digram](/temp-assets/diagram-export-4-4-2026-10_56_57-PM.png)
+
+## Step - 1
+
+- Go Aws console and login
+- launch EC2 instance
+- Clone repository - https://github.com/umeshraut2002/smart-incident-timeline-generator.git
+- ls
+- then cd into frontend
+- rm -rv Dockerfile
+- cd ..
+- cd into backend rm -rv Dockerfile
+
+
+## Step - 2 
+- cd into frontend 
+- vim Dockerfile 
+
