@@ -164,3 +164,84 @@ Note : For docker compose create we compulsary need dockerfile in every services
 - cd into frontend 
 - vim Dockerfile 
 
+# Multi-Stage Dockerfile (Frontend - Vite/React)
+
+## ---------------- Stage 1: Build ----------------
+FROM node:22.18.0-alpine AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy source code
+COPY . .
+
+# Build the application
+RUN npm run build
+
+
+## ---------------- Stage 2: Runtime ----------------
+FROM nginx:alpine
+
+# Copy built files from builder stage
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose port 80 (Nginx default)
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
+
+go -> EC2 instance -> Security group -> inbound rule -> add rule -> http -> anywhere
+
+go to -> broser -> http://<your-public-ip>:80
+
+## step - 3 
+
+- go to -> backenf 
+  - cd backend 
+  - vim Dockerfile 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
