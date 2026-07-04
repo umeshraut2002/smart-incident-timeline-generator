@@ -1,0 +1,32 @@
+{
+  "family": "jenkins-agent",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "1024",
+  "memory": "2048",
+  "executionRoleArn": "arn:aws:iam::337405469072:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::337405469072:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "jenkins-agent",
+      "image": "337405469072.dkr.ecr.ap-south-1.amazonaws.com/jenkins-devops-agent:latest",
+      "essential": true,
+      "environment": [
+        {
+          "name": "JENKINS_URL",
+          "value": "http://13.235.172.246:8080"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/jenkins-agent",
+          "awslogs-region": "ap-south-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
